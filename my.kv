@@ -1,0 +1,179 @@
+<CalcLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        TextInput:
+            id: calc_input
+            text: "0"
+            text_size: self.size
+            halign: "right"
+            font_size: 65
+            size_hint: (1, .40)
+            background_color: 0,0,0,1
+            foreground_color: 1,1,1,1
+
+
+        GridLayout:
+            size_hint: (1, .85)
+            cols: 4
+            rows: 5
+            spacing: 7.5
+            padding: 10
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: 'Exit'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                on_release: app.stop()
+                color: 217/255, 55/255, 20/255, 1
+
+            RoundedButton:
+                id: clear
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "C"
+                color: 217/255, 55/255, 20/255, 1
+                on_press: root.clear()
+
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "<<"
+                color: 217/255, 55/255, 20/255, 1
+                on_press: root.remove()
+
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "/"
+                color: 108/255, 247/255, 75/255, 1
+                on_press: root.math_sign("/")
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "7"
+                color: 0,0,0,1
+                on_press: root.button_press(7)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "8"
+                color: 0,0,0,1
+                on_press: root.button_press(8)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "9"
+                color: 0,0,0,1
+                on_press: root.button_press(9)
+
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "x"
+                color: 108/255, 247/255, 75/255, 1
+                on_press: root.math_sign("*")
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "4"
+                color: 0,0,0,1
+                on_press: root.button_press(4)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "5"
+                color: 0,0,0,1
+                on_press: root.button_press(5)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "6"
+                color: 0,0,0,1
+                on_press: root.button_press(6)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "-"
+                color: 108/255, 247/255, 75/255, 1
+                on_press: root.math_sign("-")
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "1"
+                color: 0,0,0,1
+                on_press: root.button_press(1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "2"
+                color: 0,0,0,1
+                on_press: root.button_press(2)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "3"
+                color: 0,0,0,1
+                on_press: root.button_press(3)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "+"
+                color: 108/255, 247/255, 75/255, 1
+                on_press: root.math_sign("+")
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "+/-"
+                color: 0,0,0,1
+                on_press: root.pos_neg()
+
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "0"
+                color: 0,0,0,1
+                on_press: root.button_press(0)
+            RoundedButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "."
+                color: 0,0,0,1
+                on_press: root.dot()
+
+            EqualButton:
+                size_hint: (.2, .2)
+                font_size: 32
+                text: "="
+                on_press: root.equals()
+
+<RoundedButton@Button>
+    background_color: 0,0,0,0
+    canvas.before:
+        Color:
+            rgba: 60/255, 63/255, 65/255, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [50]
+
+<EqualButton@Button>
+    background_color: 0,0,0,0
+    canvas.before:
+        Color:
+            rgba: 52/255, 119/255, 36/255, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [50]
